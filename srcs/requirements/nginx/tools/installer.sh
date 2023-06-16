@@ -1,5 +1,4 @@
 #!/bin/bash
-USER=root
 
 apt install openssl -y
 sleep 2

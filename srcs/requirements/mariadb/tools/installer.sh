@@ -1,10 +1,5 @@
 #!/bin/bash
 
-MYSQL_ROOT_PASSWORD=Qwertyuiop90_
-MYSQL_USER=mhanda
-MYSQL_PASSWORD=Qwertyuiop90_
-MYSQL_DATABASE=mariadb
-DATABASE_NAME=mariadb
 service mysql start
 sleep 5
 mysql -e "CREATE DATABASE mariadb;"

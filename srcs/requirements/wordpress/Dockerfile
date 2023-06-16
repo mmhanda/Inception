@@ -1,4 +1,9 @@
 FROM debian:buster
 
-RUN apt -y update && apt -y install wget  && wget -y https://wordpress.org/latest.zip  \
-    && apt install unzip -y && mkdir -p /usr/share/nginx && unzip latest.zip -d /usr/share/nginx/
+RUN apt -y update && apt -y install wget
+
+COPY ./tools/installer.sh ./
+RUN chmod 777 installer.sh
+EXPOSE 9000
+
+CMD [ "./installer.sh" ]
