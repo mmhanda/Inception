@@ -1,4 +1,7 @@
 FROM debian:buster
 
-RUN apt -y update && apt install wget && wget https://wordpress.org/latest.zip \
-    && apt install unzip && mkdir -p /usr/share/nginx && unzip latest.zip -d /usr/share/nginx/
+RUN  apt update &&  apt install mariadb-server -y
+COPY ./tools/installer.sh ./
+RUN  chmod 777 installer.sh
+
+CMD  ["./installer.sh"]
