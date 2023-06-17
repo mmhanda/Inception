@@ -11,6 +11,7 @@ services :
         env_file:
             - .env
         volumes:
+            - nginx_press_data:/var/www/html
     mariadb:
         image: mariadb:mariadb
         container_name: mariadb
@@ -32,16 +33,19 @@ services :
         depends_on:
             - mariadb
             - nginx
-        
+        volumes:
+            - nginx_press_data:/mnt/shared_nginx_press/wordpress
 
 volumes:
-    nginx_db_data:
-        driver: local
-        driver_opts:
-            type: none
-            device: $HOME/Desktop/Inception/nginx_db_data
-            o: bind
-    wordpress_data:
-        driver: local
-        o: bind
-        device: $HOME/Desktop/Inception/wordpress_data
+  database_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: $HOME/Desktop/Inception/database_data
+      o: bind
+  nginx_press_data:
+    driver_opts:
+      type: none
+      device: $HOME/Desktop/Inception/nginx_press_data
+      o: bind
+      
