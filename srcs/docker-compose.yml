@@ -12,29 +12,34 @@ services :
             - .env
         volumes:
             - nginx_press_data:/var/www/html/
+        depends_on:
+            - wordpress
+        networks:
+            - netfornet
     mariadb:
         image: mariadb:mariadb
         container_name: mariadb
         build: ./requirements/mariadb/
-        ports:
-            - "3306:3306"
         restart: unless-stopped
         env_file:
             - .env
+        networks:
+            - netfornet
+        volumes:
+            - database_data:/var/lib/mysql
     wordpress:
         image: wordpress:wordpress
         container_name: wordpress
         build: ./requirements/wordpress/
-        ports:
-            - "9000:9000"
         restart: unless-stopped
         env_file:
             - .env
         depends_on:
             - mariadb
-            - nginx
         volumes:
             - nginx_press_data:/var/www/html/
+        networks:
+            - netfornet
 
 volumes:
   nginx_press_data:
@@ -49,3 +54,7 @@ volumes:
       type: none
       o: bind
       device: $HOME/data/database_data/
+
+networks:
+    netfornet:
+        driver: bridge
