@@ -11,7 +11,7 @@ services :
         env_file:
             - .env
         volumes:
-            - nginx_press_data:/var/www/html/wordpress
+            - nginx_press_data:/var/www/html/
     mariadb:
         image: mariadb:mariadb
         container_name: mariadb
@@ -34,7 +34,7 @@ services :
             - mariadb
             - nginx
         volumes:
-            - nginx_press_data:/var/www/html/wordpress
+            - nginx_press_data:/var/www/html/
 
 volumes:
   nginx_press_data:
