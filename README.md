@@ -23,15 +23,16 @@ To get started with this project, you will need to have a virtual machine set up
 
 
 ## Installation
+
+1. Clone this repository to your machine.
+2. Navigate to the project directory.
 0. Rename the `.env.example` file to `.env` and set the environment variables.
     you can use this command `mv ./srcs/.env.example ./srcs/.env`.
-
-1. Clone this repository to your virtual machine.
-2. Navigate to the project directory.
 3. Run `make up` to build the Docker images for the project and to start the containers.
+    note: wait for the containers to be up and running.
 5. Access the WordPress website at `https://localhost:443` or `https://localhost`.
 6. To stop the containers, run `make down`.
-7. To remve the containers, and the volumes, and the network, and the images, run `make clean`.
+7. To remove the containers, and the volumes, and the network, and the images, run `make clean`.
 
 
 ## Usage
